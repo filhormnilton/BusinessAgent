@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables (secrets — never commit)
+.env
+*.env.*
+
+# Output directories (mounted as a volume in production)
+business_output/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Backup and editor files
+*.bkp
+.*bkp
+.vscode/
