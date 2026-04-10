@@ -21,38 +21,38 @@
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════╗
-║                         ENTRY POINTS                                    ║
+║                         ENTRY POINTS                                     ║
 ║                                                                          ║
 ║   👥 Microsoft Teams          🌐 External App / Swagger UI              ║
-║   (group chat or DM)          (REST client, automation, testing)        ║
-║          │                                  │                           ║
-║          ▼                                  ▼                           ║
-║   Azure Bot Service              X-API-Key header                       ║
+║   (group chat or DM)          (REST client, automation, testing)         ║
+║          │                                  │                            ║
+║          ▼                                  ▼                            ║
+║   Azure Bot Service              X-API-Key header                        ║
 ║   (JWT validation)                                                       ║
-║          │                                  │                           ║
-║          ▼                                  ▼                           ║
-║   POST /api/messages             POST /api/v1/chat                      ║
+║          │                                  │                            ║
+║          ▼                                  ▼                            ║
+║   POST /api/messages             POST /api/v1/chat                       ║
 ╚══════════════════════════════════════════════════════════════════════════╝
                           │                │
                           └────────┬───────┘
                                    ▼
 ╔══════════════════════════════════════════════════════════════════════════╗
-║                    🧠  CHIEF ARCHITECT — frysda                         ║
+║                    🧠  CHIEF ARCHITECT — frysda                          ║ 
 ║                    (LangGraph ReAct Supervisor)                          ║
 ║                                                                          ║
-║   ┌─ Knowledge Base Search (BEFORE every response) ──────────────────┐  ║
+║   ┌─ Knowledge Base Search (BEFORE every response) ──────────────────┐   ║
 ║   │  Reads prior domain context, decisions, terminology               │  ║
 ║   └───────────────────────────────────────────────────────────────────┘  ║
 ║                                                                          ║
-║   EXECUTION MODES (auto-detected from intent):                          ║
-║   ┌──────────────────────────────────────────────────────────────────┐  ║
-║   │  MODE 1 │ User Story Engineering  →  JIRA + DOCS                 │  ║
-║   │  MODE 2 │ Heuristic Audit         →  JIRA + MIRO + SLIDES        │  ║
-║   │  MODE 3 │ Discovery & Architecture→  WEB + PROCESS + ARCHITECT   │  ║
-║   │  MODE 4 │ Mass Change Management  →  JIRA + DOCS + PROCESS       │  ║
-║   │  MODE 5 │ Ad-hoc Orchestration    →  Intelligent routing         │  ║
-║   │  MODE 6 │ Data Visualization      →  CHARTS + WEB/JIRA           │  ║
-║   └──────────────────────────────────────────────────────────────────┘  ║
+║   EXECUTION MODES (auto-detected from intent):                           ║
+║   ┌──────────────────────────────────────────────────────────────────┐   ║
+║   │  MODE 1 │ User Story Engineering  →  JIRA + DOCS                 │   ║
+║   │  MODE 2 │ Heuristic Audit         →  JIRA + MIRO + SLIDES        │   ║
+║   │  MODE 3 │ Discovery & Architecture→  WEB + PROCESS + ARCHITECT   │   ║
+║   │  MODE 4 │ Mass Change Management  →  JIRA + DOCS + PROCESS       │   ║
+║   │  MODE 5 │ Ad-hoc Orchestration    →  Intelligent routing         │   ║
+║   │  MODE 6 │ Data Visualization      →  CHARTS + WEB/JIRA           │   ║
+║   └──────────────────────────────────────────────────────────────────┘   ║
 ╚══════════════════════════════════════════════════════════════════════════╝
           │          │         │        │         │       │       │       │
           ▼          ▼         ▼        ▼         ▼       ▼       ▼       ▼
@@ -67,9 +67,9 @@
                                                                           │
                                                                           ▼
 ╔══════════════════════════════════════════════════════════════════════════╗
-║                    📚  KNOWLEDGE BASE (Auto-Learn)                      ║
-║   After EVERY interaction: extracts & persists domain decisions,        ║
-║   user preferences, project terminology → business_output/knowledge_base║
+║                    📚  KNOWLEDGE BASE (Auto-Learn)                       ║
+║   After EVERY interaction: extracts & persists domain decisions,         ║
+║   user preferences, project terminology → business_output/knowledge_base ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -100,14 +100,14 @@ Developer Machine
   ┌─────────────────────────────┐       ┌─────────────────────────────┐
   │ python api_server.py        │       │ python dev_ui/server.py     │
   │                             │       │                             │
-  │ ✅ Startup events:          │       │ ✅ Mock Teams-like UI       │
+  │ ✅ Startup events:         │       │ ✅ Mock Teams-like UI       │
   │  · load .env                │       │  · Simulates group chat     │
   │  · init GPT-4o via OpenAI   │       │  · @frysda mention support  │
   │  · create orchestrator      │       │  · Knowledge base viewer    │
   │  · register 8 agents        │       └──────────────┬──────────────┘
   │  · init Bot adapter (Teams) │                      │ HTTP
   │                             │                      ▼
-  │ 📡 Listening on :8000       │              http://localhost:8080
+  │ 📡 Listening on :8000       │            http://localhost:8080
   └────────────┬────────────────┘
                │
      ┌─────────▼──────────────────────────┐
@@ -116,46 +116,46 @@ Developer Machine
      │  http://localhost:8000/api/v1/chat │  ← Orchestrator entry
      └─────────┬──────────────────────────┘
                │
-     ┌─────────▼──────────────────────────────────────────────────────┐
+     ┌─────────▼───────────────────────────────────────────────────── ─┐
      │  POST /api/v1/chat                                              │
      │                                                                 │
      │  Request body:                                                  │
      │  {                                                              │
-     │    "conversation_id": "session-01",                            │
-     │    "message": "Crie um diagrama de arquitetura hexagonal",     │
-     │    "user_name": "Nilton"                                       │
+     │    "conversation_id": "session-01",                             │
+     │    "message": "Crie um diagrama de arquitetura hexagonal",      │
+     │    "user_name": "Nilton"                                        │
      │  }                                                              │
      │                                                                 │
-     │  Headers: X-API-Key: <your-api-key>   (optional locally)      │
-     └─────────┬──────────────────────────────────────────────────────┘
+     │  Headers: X-API-Key: <your-api-key>   (optional locally)        │
+     └─────────┬───────────────────────────────────────────────────── ─┘
+               │
+               ▼
+     ┌───────────────────────────────────────────────────────────────── ┐
+     │              🧠 ChiefArchitect.invoke()                          │
+     │                                                                  │
+     │  1. search_knowledge_base("arquitetura hexagonal")               │
+     │     → retrieves prior project context (if any)                   │
+     │                                                                  │
+     │  2. Analyzes intent → MODE 3 (Discovery & Architecture)          │
+     │     Presents execution plan to user                              │
+     │                                                                  │
+     │  3. Delegates:                                                   │
+     │     · delegate_to_web     → researches hexagonal architecture    │
+     │     · delegate_to_architect → generates .drawio file             │
+     │                                                                  │
+     │  4. Composes final response                                      │
+     │                                                                  │
+     │  5. _auto_learn() → extracts & saves domain knowledge            │
+     │     → business_output/knowledge_base/<hash>.txt                  │
+     └─────────┬──────────────────────────────────────────────────────  ┘
                │
                ▼
      ┌─────────────────────────────────────────────────────────────────┐
-     │              🧠 ChiefArchitect.invoke()                         │
-     │                                                                 │
-     │  1. search_knowledge_base("arquitetura hexagonal")             │
-     │     → retrieves prior project context (if any)                │
-     │                                                                 │
-     │  2. Analyzes intent → MODE 3 (Discovery & Architecture)       │
-     │     Presents execution plan to user                            │
-     │                                                                 │
-     │  3. Delegates:                                                  │
-     │     · delegate_to_web     → researches hexagonal architecture  │
-     │     · delegate_to_architect → generates .drawio file          │
-     │                                                                 │
-     │  4. Composes final response                                    │
-     │                                                                 │
-     │  5. _auto_learn() → extracts & saves domain knowledge         │
-     │     → business_output/knowledge_base/<hash>.txt               │
-     └─────────┬──────────────────────────────────────────────────────┘
-               │
-               ▼
-     ┌─────────────────────────────────────────────────────────────────┐
-     │  Response JSON:                                                  │
+     │  Response JSON:                                                 │
      │  {                                                              │
-     │    "response": "## Diagrama Gerado\n...",                      │
-     │    "conversation_id": "session-01",                            │
-     │    "files": ["diagrams/order_management_hexagonal.drawio"]     │
+     │    "response": "## Diagrama Gerado\n...",                       │
+     │    "conversation_id": "session-01",                             │
+     │    "files": ["diagrams/order_management_hexagonal.drawio"]      │
      │  }                                                              │
      └─────────────────────────────────────────────────────────────────┘
 ```
@@ -174,66 +174,66 @@ Microsoft Teams
                ▼
   ┌────────────────────────────────────────────────────────────────────┐
   │                    Microsoft Teams Client                          │
-  │  Detects @frysda mention → routes to registered bot               │
+  │  Detects @frysda mention → routes to registered bot                │
   └────────────────────────┬───────────────────────────────────────────┘
                            │  Teams internal routing
                            ▼
   ┌────────────────────────────────────────────────────────────────────┐
   │                    Azure Bot Service                               │
   │                                                                    │
-  │  · Validates bot registration (TEAMS_APP_ID)                      │
-  │  · Signs request with JWT (RS256)                                 │
-  │  · Delivers Activity payload to Messaging Endpoint:               │
-  │    POST https://<app>.azurecontainerapps.io/api/messages          │
+  │  · Validates bot registration (TEAMS_APP_ID)                       │
+  │  · Signs request with JWT (RS256)                                  │
+  │  · Delivers Activity payload to Messaging Endpoint:                │
+  │    POST https://<app>.azurecontainerapps.io/api/messages           │
   └────────────────────────┬───────────────────────────────────────────┘
                            │  HTTPS POST (JWT signed)
                            ▼
   ┌────────────────────────────────────────────────────────────────────┐
-  │               Azure Container App — api_server.py                 │
-  │                         Port 8000                                 │
+  │               Azure Container App — api_server.py                  │
+  │                         Port 8000                                  │
   │                                                                    │
-  │  POST /api/messages                                               │
-  │    ↓                                                              │
-  │  BotFrameworkAdapter.process_activity()                           │
-  │    · Validates JWT signature against Microsoft JWKS               │
-  │    · Deserializes Teams Activity object                           │
-  │    ↓                                                              │
-  │  BusinessBot.on_message_activity()                                │
-  │    · Extracts: conversation_id, user_text, user_name             │
-  │    · Sends typing indicator back to Teams                        │
-  │    · Loads conversation history (CosmosDB or in-memory)          │
-  │    ↓                                                              │
-  │  _orchestrator.invoke(user_text, chat_history=history)           │
+  │  POST /api/messages                                                │
+  │    ↓                                                               │
+  │  BotFrameworkAdapter.process_activity()                            │
+  │    · Validates JWT signature against Microsoft JWKS                │
+  │    · Deserializes Teams Activity object                            │
+  │    ↓                                                               │
+  │  BusinessBot.on_message_activity()                                 │
+  │    · Extracts: conversation_id, user_text, user_name               │
+  │    · Sends typing indicator back to Teams                          │
+  │    · Loads conversation history (CosmosDB or in-memory)            │
+  │    ↓                                                               │
+  │  _orchestrator.invoke(user_text, chat_history=history)             │
   └────────────────────────┬───────────────────────────────────────────┘
                            │
                            ▼
   ┌────────────────────────────────────────────────────────────────────┐
-  │              🧠 ChiefArchitect — same as local flow               │
+  │              🧠 ChiefArchitect — same as local flow                │
   │                                                                    │
-  │  1. search_knowledge_base(user_text)                              │
-  │  2. Intent classification → MODE 1 (User Story Engineering)      │
-  │  3. Presents execution plan                                       │
-  │  4. delegate_to_jira:                                            │
-  │     · Principal BA agent drafts complete User Story              │
-  │     · Validates acceptance criteria, BDD scenarios               │
-  │     · Creates issue in Atlassian Jira via API                    │
-  │  5. _auto_learn() → persists domain knowledge                    │
-  │     (Azure File Share: /app/business_output/knowledge_base/)     │
+  │  1. search_knowledge_base(user_text)                               │
+  │  2. Intent classification → MODE 1 (User Story Engineering)        │
+  │  3. Presents execution plan                                        │
+  │  4. delegate_to_jira:                                              │
+  │     · Principal BA agent drafts complete User Story                │
+  │     · Validates acceptance criteria, BDD scenarios                 │
+  │     · Creates issue in Atlassian Jira via API                      │
+  │  5. _auto_learn() → persists domain knowledge                      │
+  │     (Azure File Share: /app/business_output/knowledge_base/)       │
   └────────────────────────┬───────────────────────────────────────────┘
                            │
                            ▼
   ┌────────────────────────────────────────────────────────────────────┐
-  │              BusinessBot.on_message_activity()                    │
+  │              BusinessBot.on_message_activity()                     │
   │                                                                    │
-  │  · Appends HumanMessage + AIMessage to history                   │
-  │  · Saves updated history to CosmosDB (or in-memory)              │
-  │  · turn_context.send_activity(MessageFactory.text(response))     │
+  │  · Appends HumanMessage + AIMessage to history                     │
+  │  · Saves updated history to CosmosDB (or in-memory)                │
+  │  · turn_context.send_activity(MessageFactory.text(response))       │
   └────────────────────────┬───────────────────────────────────────────┘
                            │  Bot Framework reply
                            ▼
   ┌────────────────────────────────────────────────────────────────────┐
   │                    Azure Bot Service                               │
-  │  Routes response back to originating Teams conversation           │
+  │  Routes response back to originating Teams conversation            │
   └────────────────────────┬───────────────────────────────────────────┘
                            │
                            ▼
